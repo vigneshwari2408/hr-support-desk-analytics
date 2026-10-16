@@ -1,67 +1,40 @@
-# 📊 HR Support Desk Analytics
+# Support Desk Analytics
 
-A data analytics project built to analyze support desk operations — covering SLA compliance, agent performance, resolution times, and ticket volume trends.
+**Where do support requests get stuck, and is the team getting faster or slower?**
 
-Built using **SQLite**, **Python (Pandas)**, and **Tableau Public**.
+At TriNet Zenefits I handled about 25 benefits cases a day against a 48-hour SLA, so I know how quickly a queue goes from fine to behind. Here I took a public dataset of 2,330 support tickets from 2023 and looked at it the way an HR or people-ops team would: SLA compliance, resolution time and whether priority actually changes anything.
 
----
+**Tools:** SQL (SQLite) · Python (pandas) · Tableau Public &nbsp;|&nbsp; **Data:** public Kaggle tech-support dataset, not employer data
 
-## 📌 Project Overview
-
-This project analyzes 2,330 real support tickets from a technical support dataset to uncover operational inefficiencies and performance trends in a support desk environment — the kind of insights an HR Ops or People Analytics team would act on.
-
-### Key Business Questions Answered:
-- Which request categories breach SLA the most?
-- Is SLA compliance improving or declining over time?
-- Which agents are performing best on resolution time and satisfaction?
-- How long does it take to resolve tickets?
-- Are high-priority tickets being resolved faster than low-priority ones?
+![Support desk dashboard](dashboard.png)
 
 ---
 
-## 📷 Dashboard Preview
+## What I found
 
-![HR Support Desk Analytics Dashboard](dashboard.png)
+- **SLA compliance fell from 76% to 60% over the year.** Workload seems to be outpacing the team.
+- **Training requests were the hardest to close on time,** with only 57.6% within SLA.
+- **High-priority tickets weren't resolved any faster than low-priority ones,** so the priority flag isn't changing how work gets picked up.
+- **There's a long tail:** 586 tickets took more than 4 days, while 839 (36%) were closed within 4–24 hours.
+- **Average resolution time varies a lot between agents.** The fastest agent's average (26.2 hours) is a realistic internal benchmark.
 
----
+## What I'd look at next
 
-## 🔍 Key Findings
+1. **Find out why priority doesn't speed things up.** Is it the routing, or is the label not used consistently?
+2. **Review the training-request queue first,** since it misses SLA most often.
+3. **Track the 4+ day tickets separately**, so they don't hide inside a monthly average.
 
-| Finding | Insight |
-|---|---|
-| **Training Requests** have the worst SLA compliance at **57.6%** | Needs urgent attention — likely understaffed or undertrained |
-| **SLA compliance dropped from 76% to 60%** over 12 months | A consistent downward trend — workload may be outpacing capacity |
-| **High priority tickets don't resolve faster than Low priority** | Priority flagging system may not be working effectively |
-| **839 tickets (36%)** take 4-24 hours to resolve | Majority of tickets resolved same day — a positive sign |
-| **586 tickets take 4+ days** | Long tail of unresolved tickets needs investigation |
-| **Connor Danielovitch** has the fastest avg resolution time at **26.2 hrs** | Could be used as a benchmark for other agents |
+## The questions
 
----
-
-## 🗂️ Project Structure
-
-  ```
- hr-support-desk-analytics/
-  ├── tickets_clean.csv       # Cleaned dataset (2,330 rows)
-  ├── analysis.sql            # All SQL queries with comments
-  ├── data_cleaning.ipynb     # Python data loading and cleaning
-  ├── dashboard.png           # Dashboard screenshot
-  └── README.md
-
-  ```
-
-## 🛠️ Tools Used
-
-| Tool | Purpose |
-|---|---|
-| **SQLite** | Database storage and analytical queries |
-| **Python (Pandas)** | Data loading, cleaning, CSV export |
-| **Jupyter Notebook** | Interactive data exploration |
-| **Tableau Public** | Dashboard visualization |
+- Which request types miss SLA most?
+- Is SLA compliance getting better or worse over time?
+- How long do tickets take to resolve?
+- Do high-priority tickets get resolved faster?
+- How does performance differ between agents?
 
 ---
 
-## 🧹 Data Cleaning Steps
+## Data Cleaning Steps
 
 The raw dataset required the following cleaning before analysis:
 
@@ -73,7 +46,7 @@ The raw dataset required the following cleaning before analysis:
 
 ---
 
-## 📊 SQL Queries
+## SQL Queries
 
 Five analytical queries power the dashboard:
 
@@ -148,7 +121,7 @@ ORDER BY CASE priority WHEN 'High' THEN 1 WHEN 'Medium' THEN 2 ELSE 3 END;
 
 ---
 
-## 📁 Dataset
+## Dataset
 
 - **Source:** [Technical Support Dataset — Kaggle](https://www.kaggle.com/datasets/suvroo/technical-support-dataset)
 - **Size:** 2,330 tickets
@@ -176,7 +149,7 @@ jupyter notebook data_cleaning.ipynb
 
 ---
 
-## About
+---
 
-**Vigneshwari Nalla** — MSc Data Analytics for Business, KEDGE Business School  
-[LinkedIn](https://linkedin.com/in/vigna24) · [Portfolio](https://vigneshwari2408.github.io/vigneshwari-portfolio/) · [GitHub](https://github.com/vigneshwari2408)
+Made by **Vigneshwari Nalla (Vee)** · MSc Data Analytics for Business, KEDGE Business School
+[website](https://vigneshwari2408.github.io/vigneshwari-portfolio/) · [linkedin](https://www.linkedin.com/in/vigna24/) · [all projects](https://github.com/vigneshwari2408)
